@@ -6,18 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#datepicker").datepicker();
+      });
+    </script>
+
+    <link
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lato"
     />
+    <title>JQuery Test</title>
+
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script type="text/javascript" src="./index.js"></script>
-    <title>JQuery Test</title>
   </head>
   <body class="main">
     <div class="header">
-      <button class="tablink" style="background-color: #ffad4e">
+      <button
+        style="background-color: rgba(253, 131, 0, 0.7)"
+        class="tablink"
+        onclick="openPage('Transfers', this, 'rgba(253, 131, 0, 0.7)')"
+      >
         TRANSFERS
       </button>
-      <button class="tablink">EXCURSIONS</button>
+      <button
+        class="tablink"
+        onclick="openPage('Excursions', this, 'rgba(253, 131, 0, 0.7)')"
+      >
+        EXCURSIONS
+      </button>
     </div>
     <div id="Transfers" class="tabcontent">
       <div class="content1">
@@ -60,13 +83,7 @@
         <div class="tabcontentmain" style="padding-top: 1rem">
           <div class="drop-content">
             <p>Arrival</p>
-            <input
-              type="text"
-              name="date"
-              class="date"
-              readonly
-              placeholder="DD/MM/YYYY"
-            />
+            <input type="text" id="datepicker" />
           </div>
 
           <div class="drop-content">
@@ -83,31 +100,31 @@
 
           <div class="drop-content">
             <div class="d-flex" style="justify-content: space-evenly">
-              <div style="width: 70px" class="small-drop">
+              <div style="width: 60px" class="small-drop">
                 <p>Adult (+11)</p>
                 <select id="myColors" class="select">
-                  <option value="Red">Red</option>
-                  <option value="Green">Green</option>
-                  <option value="White">White</option>
-                  <option value="Black">Black</option>
+                  <option value="Red">1</option>
+                  <option value="Green">2-6</option>
+                  <option value="White">6-10</option>
+                  <option value="Black">10+</option>
                 </select>
               </div>
-              <div style="width: 70px" class="small-drop">
+              <div style="width: 60px" class="small-drop">
                 <p>Child(2-11)</p>
                 <select id="myColors" class="select">
-                  <option value="Red">Red</option>
-                  <option value="Green">Green</option>
-                  <option value="White">White</option>
-                  <option value="Black">Black</option>
+                  <option value="Red">1</option>
+                  <option value="Green">2-6</option>
+                  <option value="White">6-10</option>
+                  <option value="Black">10+</option>
                 </select>
               </div>
-              <div style="width: 70px" class="small-drop">
+              <div style="width: 60px" class="small-drop">
                 <p>Infant (0-2)</p>
                 <select id="myColors" class="select">
-                  <option value="Red">Red</option>
-                  <option value="Green">Green</option>
-                  <option value="White">White</option>
-                  <option value="Black">Black</option>
+                  <option value="Red">1</option>
+                  <option value="Green">2-6</option>
+                  <option value="White">6-10</option>
+                  <option value="Black">10+</option>
                 </select>
               </div>
             </div>
@@ -120,5 +137,6 @@
         </div>
       </div>
     </div>
+    <div id="Excursions"></div>
   </body>
 </html>
