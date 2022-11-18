@@ -1,0 +1,133 @@
+body {
+  margin: 0px;
+  padding-bottom: 3rem;
+  font-family: "Lato";
+}
+.active {
+  background-color: #ffad4e;
+  display: block;
+}
+
+.tablink {
+  background-color: #3f81bf;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  height: 3.5rem;
+  font-size: 17px;
+  min-width: 50%;
+}
+
+.tablink:hover {
+  filter: brightness(108%);
+}
+
+.tabcontent {
+  display: block;
+  width: 100%;
+  padding-bottom: 3rem;
+}
+
+#Transfers {
+}
+
+.header {
+  display: flex;
+  width: 100%;
+}
+.drop-content {
+  padding: 10px;
+  width: 100%;
+}
+
+.drop-content p {
+  font-size: 14px;
+  color: white;
+
+  margin-top: 0px;
+  margin: 0px;
+  padding-bottom: 7px;
+}
+.select {
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  color: #555555;
+}
+.search {
+  height: 40px;
+  background-color: #ff8300;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 3rem;
+  cursor: pointer;
+  width: 100%;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+}
+
+.d-flex {
+  display: flex !important;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.content1 {
+  width: 75%;
+}
+.search-main {
+  width: 70%;
+}
+.content2 {
+  width: 25%;
+}
+.tabcontentmain {
+  display: flex;
+  flex-wrap: wrap;
+}
+.small-drop p {
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 320px) {
+  .header {
+    display: flex;
+  }
+  .search {
+    margin-top: 1rem;
+  }
+
+  .content1 {
+    width: 100%;
+  }
+  .content2 {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+  }
+  .main {
+    height: 100vh;
+    background-color: #013262;
+  }
+}
+
+@media only screen and (min-width: 425px) {
+  .header {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .main {
+    height: 100vh;
+    background-color: #b0b0b0;
+  }
+}
