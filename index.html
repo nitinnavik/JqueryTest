@@ -13,7 +13,28 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
       $(document).ready(function () {
-        $("#datepicker").datepicker();
+        $("#datepicker1").datepicker();
+        $("#datepicker2").datepicker();
+      });
+
+      $(document).ready(function () {
+        var url = "data.json";
+
+        $.getJSON(url, function (data) {
+          $.each(data, function (index, value) {
+            console.log(data);
+            $("#select1").append(
+              '<option value="' + value.name + '">' + value.city + "</option>"
+            );
+          });
+        });
+
+        // SHOW SELECTED VALUE.
+        $("#sel").change(function () {
+          $("#msg").text(
+            "Selected Item: " + this.options[this.selectedIndex].text
+          );
+        });
       });
     </script>
 
@@ -47,22 +68,20 @@
         <div class="tabcontentmain" style="padding-top: 1rem">
           <div class="drop-content">
             <p>Airport</p>
-            <select id="myColors" class="select">
-              <option value="Red">Red</option>
-              <option value="Green">Green</option>
-              <option value="White">White</option>
-              <option value="Black">Black</option>
+            <select
+              id="select1"
+              onchange="checkPriceMode(event)"
+              class="select"
+            >
+              <option value="">-- Select --</option>
             </select>
           </div>
 
           <div class="drop-content">
             <p>Hotel</p>
             <div>
-              <select id="myColors" class="select">
-                <option value="Red">Red</option>
-                <option value="Green">Green</option>
-                <option value="White">White</option>
-                <option value="Black">Black</option>
+              <select id="select2" class="select">
+                <option value="">-- Select --</option>
               </select>
             </div>
           </div>
@@ -83,24 +102,17 @@
         <div class="tabcontentmain" style="padding-top: 1rem">
           <div class="drop-content">
             <p>Arrival</p>
-            <input type="text" id="datepicker" />
+            <input type="text" id="datepicker1" class="datepickerinput" />
           </div>
 
           <div class="drop-content">
             <p>Departure</p>
-            <div>
-              <select id="myColors" class="select">
-                <option value="Red">Red</option>
-                <option value="Green">Green</option>
-                <option value="White">White</option>
-                <option value="Black">Black</option>
-              </select>
-            </div>
+            <input type="text" id="datepicker2" class="datepickerinput" />
           </div>
 
           <div class="drop-content">
-            <div class="d-flex" style="justify-content: space-evenly">
-              <div style="width: 60px" class="small-drop">
+            <div class="small-drop-content">
+              <div style="min-width: 60px" class="small-drop">
                 <p>Adult (+11)</p>
                 <select id="myColors" class="select">
                   <option value="Red">1</option>
@@ -109,7 +121,7 @@
                   <option value="Black">10+</option>
                 </select>
               </div>
-              <div style="width: 60px" class="small-drop">
+              <div style="min-width: 60px" class="small-drop">
                 <p>Child(2-11)</p>
                 <select id="myColors" class="select">
                   <option value="Red">1</option>
@@ -118,7 +130,7 @@
                   <option value="Black">10+</option>
                 </select>
               </div>
-              <div style="width: 60px" class="small-drop">
+              <div style="min-width: 60px" class="small-drop">
                 <p>Infant (0-2)</p>
                 <select id="myColors" class="select">
                   <option value="Red">1</option>
