@@ -8,10 +8,16 @@
       rel="stylesheet"
       href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
     />
-
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
+      $("#select2")
+        .find("option")
+        .remove()
+        .end()
+        .append('<option value="whatever">text</option>')
+        .val("whatever");
+      var data;
       $(document).ready(function () {
         $("#datepicker1").datepicker();
         $("#datepicker2").datepicker();
@@ -19,23 +25,67 @@
 
       $(document).ready(function () {
         var url = "data.json";
-
-        $.getJSON(url, function (data) {
-          $.each(data, function (index, value) {
-            console.log(data);
-            $("#select1").append(
-              '<option value="' + value.name + '">' + value.city + "</option>"
-            );
+        $.ajax({
+          url: url, //api url
+          type: "GET",
+          contentType: "text/plain",
+          crossDomain: true,
+          beforeSend: function (xhr) {
+            xhr.withCredentials = true;
+          },
+          accepts: arguments,
+        })
+          .done(function (result) {
+            console.log(result);
+            data = result;
+            $.each(result, function (index, value) {
+              console.log(result);
+              $("#select1").append(
+                '<option value="' + value.name + '">' + value.city + "</option>"
+              );
+            });
+          })
+          .error(function (err) {
+            //console.log(err);
           });
-        });
-
-        // SHOW SELECTED VALUE.
-        $("#sel").change(function () {
-          $("#msg").text(
-            "Selected Item: " + this.options[this.selectedIndex].text
-          );
-        });
       });
+
+      function checkPriceMode(event) {
+        // $("#select1").val();
+        var url = "data.json";
+        $.ajax({
+          url: url, //api url
+          type: "GET",
+          contentType: "text/plain",
+          crossDomain: true,
+          beforeSend: function (xhr) {
+            xhr.withCredentials = true;
+          },
+          accepts: arguments,
+        })
+          .done(function (result) {
+            console.log(result);
+            data = result;
+            let filteredData = result.filter((el) => {
+              // console.log(el.name, "el.name");
+              // console.log(event.target.value, "Value");
+              if (el.name === event.target.value) {
+                return el;
+              }
+            });
+            console.log(filteredData);
+            $.each(filteredData, function (index, value) {
+              $.each(value.state, function (index, item) {
+                $("#select2").append(
+                  '<option value="' + item.name + '">' + item.name + "</option>"
+                );
+              });
+            });
+          })
+          .error(function (err) {
+            console.log(err);
+          });
+      }
     </script>
 
     <link
