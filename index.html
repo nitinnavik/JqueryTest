@@ -75,6 +75,9 @@
             });
             console.log(filteredData);
             $.each(filteredData, function (index, value) {
+              $("#select2").empty();
+              $("#select2").append('<option value="">-- Select --</option>');
+
               $.each(value.state, function (index, item) {
                 $("#select2").append(
                   '<option value="' + item.name + '">' + item.name + "</option>"
